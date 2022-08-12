@@ -50,7 +50,6 @@ public class Respawn : MonoBehaviour
 				IgnorarColision(false);
 			}
 		}
-		
 	}
 	
 	//--------------------------------------------------------//
@@ -58,8 +57,6 @@ public class Respawn : MonoBehaviour
 	public void Respawnear()
 	{
 		GetComponent<Rigidbody>().velocity = Vector3.zero;
-		
-		//gameObject.SendMessage("SetGiro", SendMessageOptions.DontRequireReceiver);
 		
 		if(CPAct.Habilitado())
 		{
@@ -88,8 +85,6 @@ public class Respawn : MonoBehaviour
 	{
 		GetComponent<Rigidbody>().velocity = Vector3.zero;
 		
-		//gameObject.SendMessage("SetGiro", SendMessageOptions.DontRequireReceiver);
-		
 		transform.position = pos;
 		
 		IgnorarColision(true);
@@ -98,8 +93,6 @@ public class Respawn : MonoBehaviour
 	public void Respawnear(Vector3 pos, Vector3 dir)
 	{
 		GetComponent<Rigidbody>().velocity = Vector3.zero;
-		
-		//gameObject.SendMessage("SetGiro", SendMessageOptions.DontRequireReceiver);
 		
 		transform.position = pos;
 		transform.forward = dir;
@@ -127,8 +120,4 @@ public class Respawn : MonoBehaviour
 		IgnorandoColision = b;	
 		Tempo = 0;
 	}
-	
-	
-	
-	
 }

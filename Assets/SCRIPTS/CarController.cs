@@ -12,7 +12,8 @@ public class CarController : MonoBehaviour {
     float acel = 1f;
 
     // Use this for initialization
-    void Start () {
+    void Start () 
+    {
 		
 	}
 
