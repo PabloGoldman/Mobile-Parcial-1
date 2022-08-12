@@ -90,10 +90,12 @@ public class ControlDireccion : MonoBehaviour
 			break;
             case TipoInput.AWSD:
                 if (Habilitado) {
-                    if (Input.GetKey(KeyCode.A)) {
+                    if (Input.GetKey(KeyCode.A)) 
+					{
                         gameObject.SendMessage("SetGiro", -1);
                     }
-                    if (Input.GetKey(KeyCode.D)) {
+                    if (Input.GetKey(KeyCode.D)) 
+					{
                         gameObject.SendMessage("SetGiro", 1);
                     }
                 }

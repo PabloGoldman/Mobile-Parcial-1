@@ -22,12 +22,6 @@ public class Respawn : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		/*
-		//a modo de prueba
-		TiempDeNoColision = 100;
-		IgnorarColision(true);
-		*/
-		
 		//restaura las colisiones
 		Physics.IgnoreLayerCollision(8,9,false);
 	}
@@ -65,7 +59,7 @@ public class Respawn : MonoBehaviour
 	{
 		GetComponent<Rigidbody>().velocity = Vector3.zero;
 		
-		gameObject.SendMessage("SetGiro", 0f);
+		//gameObject.SendMessage("SetGiro", SendMessageOptions.DontRequireReceiver);
 		
 		if(CPAct.Habilitado())
 		{
@@ -94,7 +88,7 @@ public class Respawn : MonoBehaviour
 	{
 		GetComponent<Rigidbody>().velocity = Vector3.zero;
 		
-		gameObject.SendMessage("SetGiro", 0f);
+		//gameObject.SendMessage("SetGiro", SendMessageOptions.DontRequireReceiver);
 		
 		transform.position = pos;
 		
@@ -105,7 +99,7 @@ public class Respawn : MonoBehaviour
 	{
 		GetComponent<Rigidbody>().velocity = Vector3.zero;
 		
-		gameObject.SendMessage("SetGiro", 0f);
+		//gameObject.SendMessage("SetGiro", SendMessageOptions.DontRequireReceiver);
 		
 		transform.position = pos;
 		transform.forward = dir;
