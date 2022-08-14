@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour 
 {
 	public int Dinero = 0;
-	public int IdPlayer = 0;
+	public int IdPlayer = 0;  //LO USA PARA SABER QUE JUGADOR ES
 	
 	public Bolsa[] Bolasas;
 	int CantBolsAct = 0;
@@ -32,14 +32,6 @@ public class Player : MonoBehaviour
 		
 		MiVisualizacion = GetComponent<Visualizacion>();
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	
-	}
-	
-	//------------------------------------------------------------------//
 	
 	public bool AgregarBolsa(Bolsa b)
 	{

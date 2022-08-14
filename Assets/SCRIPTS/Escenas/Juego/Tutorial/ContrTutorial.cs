@@ -8,7 +8,6 @@ public class ContrTutorial : MonoBehaviour
 	public float Tempo = 0;
 	
 	public bool Finalizado = false;
-	bool Iniciado = false;
 	
 	GameManager GM;
 	
@@ -22,24 +21,6 @@ public class ContrTutorial : MonoBehaviour
 		Pj.ContrTuto = this;
 	}
 	
-	// Update is called once per frame
-	void Update () 
-	{
-		/*
-		if(Iniciado)
-		{
-			if(Tempo < TiempTuto)
-			{
-				Tempo += T.GetDT();
-				if(Tempo >= TiempTuto)
-				{
-					Finalizar();
-				}
-			}
-		}
-		*/
-	}
-	
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.GetComponent<Player>() == Pj)
@@ -51,7 +32,6 @@ public class ContrTutorial : MonoBehaviour
 	public void Iniciar()
 	{
 		Pj.GetComponent<Frenado>().RestaurarVel();
-		Iniciado = true;
 	}
 	
 	public void Finalizar()
