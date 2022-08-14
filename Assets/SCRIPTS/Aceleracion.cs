@@ -20,7 +20,6 @@ public class Aceleracion : MonoBehaviour
 	Vector3 PFrnPosIni;
 	public float SensivPed = 1;
 	
-	
 	float DifIzq;
 	float DifDer;
 	
@@ -51,10 +50,6 @@ public class Aceleracion : MonoBehaviour
 			
 			PedalAcel.localPosition = PAclPosIni - PedalAcel.forward * SensivPed * Acelerado;
 		}
-		else
-		{
-			//PedalFren.localPosition = PAclPosIni;
-		}
 		
 		//frenar
 		if(DifIzq > 0)
@@ -64,10 +59,6 @@ public class Aceleracion : MonoBehaviour
 			Camion.position -= Frenado * Camion.forward;
 			
 			PedalFren.localPosition = PFrnPosIni - PedalFren.forward * SensivPed * Frenado;
-		}
-		else
-		{
-			//PedalFren.localPosition = PFrnPosIni;
 		}
 	}
 }

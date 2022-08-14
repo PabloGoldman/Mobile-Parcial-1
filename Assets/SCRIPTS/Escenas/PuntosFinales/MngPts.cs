@@ -1,4 +1,5 @@
 using UnityEngine;
+using Managers;
 using System.Collections;
 
 public class MngPts : MonoBehaviour 
@@ -7,8 +8,6 @@ public class MngPts : MonoBehaviour
 	
 	public float TiempEmpAnims = 2.5f;
 	float Tempo = 0;
-	
-	int IndexGanador = 0;
 	
 	public Vector2[] DineroPos;
 	public Vector2 DineroEsc;
@@ -22,7 +21,6 @@ public class MngPts : MonoBehaviour
 	public GameObject Fondo;
 	
 	public float TiempEspReiniciar = 10;
-	
 	
 	public float TiempParpadeo = 0.7f;
 	float TempoParpadeo = 0;
@@ -48,14 +46,14 @@ public class MngPts : MonoBehaviour
 		   Input.GetKeyDown(KeyCode.Return) ||
 		   Input.GetKeyDown(KeyCode.Mouse0))
 		{
-			Application.LoadLevel(0);
+			SceneManager.Get().ChangeScene(0);
 		}
 		
 		//REINICIAR
 		if(Input.GetKeyDown(KeyCode.Mouse1) ||
 		   Input.GetKeyDown(KeyCode.Keypad0))
 		{
-			Application.LoadLevel(Application.loadedLevel);
+			SceneManager.Get().ResetLevel();
 		}
 		
 		//CIERRA LA APLICACION
@@ -67,18 +65,15 @@ public class MngPts : MonoBehaviour
 		//CALIBRACION DEL KINECT
 		if(Input.GetKeyDown(KeyCode.Backspace))
 		{
-			Application.LoadLevel(3);
+			SceneManager.Get().ChangeScene(3);
 		}		
 		
 		
 		TiempEspReiniciar -= Time.deltaTime;
 		if(TiempEspReiniciar <= 0 )
 		{
-			Application.LoadLevel(0);
+			SceneManager.Get().ChangeScene(0);
 		}
-		
-		
-		
 		
 		if(ActivadoAnims)
 		{
@@ -98,8 +93,6 @@ public class MngPts : MonoBehaviour
 			}
 		}
 		
-		
-		
 		if(!ActivadoAnims)
 		{
 			Tempo += Time.deltaTime;
@@ -113,15 +106,6 @@ public class MngPts : MonoBehaviour
 		
 	}
 	
-	/*
-	void OnGUI()
-	{
-		SetGUIGanador();
-		SetGUIPerdedor();
-		GUI.skin = null;
-	}
-	*/
-	
 	void OnGUI()
 	{
 		if(ActivadoAnims)
@@ -132,43 +116,6 @@ public class MngPts : MonoBehaviour
 		
 		GUI.skin = null;
 	}
-	
-	//---------------------------------//
-	
-	/*
-	void SetGUIGanador()
-	{
-		GUI.skin = GS_Vict;
-		
-		R.width = ScoreEsc.x * Screen.width /100;
-		R.height = ScoreEsc.y * Screen.height /100;
-		
-		R.x = ScorePos.x * Screen.width / 100;
-		R.y = ScorePos.y * Screen.height / 100;
-		
-		if(DatosPartida.LadoGanadaor == DatosPartida.Lados.Der)
-			R.x = (Screen.width) - R.x - R.width;
-		
-		GUI.Box(R, "GANADOR" + '\n' + "DINERO: " + DatosPartida.PtsGanador);
-		
-	}
-	
-	void SetGUIPerdedor()
-	{
-		GUI.skin = GS_Derr;
-		
-		R.width = ScoreEsc.x * Screen.width /100;
-		R.height = ScoreEsc.y * Screen.height /100;
-		
-		R.x = ScorePos.x * Screen.width / 100;
-		R.y = ScorePos.y * Screen.height / 100;
-		
-		if(DatosPartida.LadoGanadaor == DatosPartida.Lados.Izq)
-			R.x = (Screen.width) - R.x - R.width;
-		
-		GUI.Box(R, "PERDEDOR" + '\n' + "DINERO: " + DatosPartida.PtsPerdedor);
-	}
-	*/
 	
 	void SetGanador()
 	{
@@ -195,8 +142,6 @@ public class MngPts : MonoBehaviour
 		R.width = DineroEsc.x * Screen.width/100;
 		R.height = DineroEsc.y * Screen.height/100;
 		
-		
-		
 		//IZQUIERDA
 		R.x = DineroPos[0].x * Screen.width/100;
 		R.y = DineroPos[0].y * Screen.height/100;
@@ -210,8 +155,6 @@ public class MngPts : MonoBehaviour
 		{
 			GUI.Box(R, "$" + Viz.PrepararNumeros(DatosPartida.PtsPerdedor));
 		}
-		
-		
 		
 		//DERECHA
 		R.x = DineroPos[1].x * Screen.width/100;
