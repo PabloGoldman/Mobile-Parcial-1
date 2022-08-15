@@ -115,25 +115,6 @@ public class ControlDireccion : MonoBehaviour
 
 	public float GetGiro()
 	{
-		/*
-		switch(DirAct)
-			{
-			case Sentido.Der:
-				if(Angulo() <= MaxAng)
-					return Angulo() / MaxAng;
-				else
-					return 1;
-				break;
-				
-			case Sentido.Izq:
-				if(Angulo() <= MaxAng)
-					return (Angulo() / MaxAng) * (-1);
-				else
-					return (-1);
-				break;
-			}
-		*/
-		
 		return Giro;
 	}
 	
