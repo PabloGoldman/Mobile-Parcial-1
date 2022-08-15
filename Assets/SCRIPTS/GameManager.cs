@@ -1,8 +1,32 @@
 using UnityEngine;
-using System.Collections.Generic;
+
+[System.Serializable]
+public class PlayerInfo
+{
+    public PlayerInfo(int tipoDeInput, Player pj)
+    {
+        TipoDeInput = tipoDeInput;
+        PJ = pj;
+    }
+
+    public bool FinCalibrado = false;
+    public bool FinTuto1 = false;
+    public bool FinTuto2 = false;
+
+    public Visualizacion.Lado LadoAct;
+
+    public int TipoDeInput = -1;
+
+    public Player PJ;
+}
 
 public class GameManager : MonoBehaviour
 {
+    public Camera camera1;
+    public Camera camera2;
+
+    public GameModeData gameModeData;
+
     public static GameManager Instancia;
 
     public float TiempoDeJuego = 60;
@@ -19,10 +43,7 @@ public class GameManager : MonoBehaviour
     //mueve los esqueletos para usar siempre los mismos
     public Transform Esqueleto1;
     public Transform Esqueleto2;
-    //public Vector3[] PosEsqsCalib;
     public Vector3[] PosEsqsCarrera;
-
-    bool PosSeteada = false;
 
     bool ConteoRedresivo = true;
     public Rect ConteoPosEsc;
@@ -57,16 +78,19 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        GameManager.Instancia = this;
+        Instancia = this;
     }
 
     void Start()
     {
         IniciarCalibracion();
 
-        //para testing
-        //PosCamionesCarrera[0].x+=100;
-        //PosCamionesCarrera[1].x+=100;
+        if (gameModeData.gameMode == GameModeData.GameMode.Solo)
+        {
+            Rect cameraRect = new Rect(0,0,1,1);
+            camera1.rect = cameraRect;
+            camera2.gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -83,7 +107,6 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
-
 
         switch (EstAct)
         {
@@ -333,8 +356,6 @@ public class GameManager : MonoBehaviour
         pjInf.PJ.GetComponent<Visualizacion>().SetLado(pjInf.LadoAct);
         //en este momento, solo la primera vez, deberia setear la otra camara asi no se superponen
         pjInf.PJ.ContrCalib.IniciarTesteo();
-        PosSeteada = true;
-
 
         if (pjInf.PJ == Player1)
         {
@@ -456,25 +477,4 @@ public class GameManager : MonoBehaviour
                 CambiarACarrera();//CambiarATutorial();
 
     }
-
-    [System.Serializable]
-    public class PlayerInfo
-    {
-        public PlayerInfo(int tipoDeInput, Player pj)
-        {
-            TipoDeInput = tipoDeInput;
-            PJ = pj;
-        }
-
-        public bool FinCalibrado = false;
-        public bool FinTuto1 = false;
-        public bool FinTuto2 = false;
-
-        public Visualizacion.Lado LadoAct;
-
-        public int TipoDeInput = -1;
-
-        public Player PJ;
-    }
-
 }

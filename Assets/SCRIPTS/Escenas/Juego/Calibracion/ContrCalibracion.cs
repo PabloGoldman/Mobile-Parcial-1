@@ -4,17 +4,7 @@ using System.Collections;
 public class ContrCalibracion : MonoBehaviour
 {
 	public Player Pj;
-	/*
-	public string ManoIzqName = "Left Hand";
-	public string ManoDerName = "Right Hand";
 	
-	bool StayIzq = false;
-	bool StayDer = false;
-	*/
-	/*
-	public float TiempCalib = 3;
-	float Tempo = 0;
-	*/
 	public float TiempEspCalib = 3;
 	float Tempo2 = 0;
 	
@@ -35,14 +25,10 @@ public class ContrCalibracion : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-        /*
-		renderer.enabled = false;
-		collider.enabled = false;
-		*/
         palletsMover.enabled = false;
         Pj.ContrCalib = this;
 		
-		GM = GameObject.Find("GameMgr").GetComponent<GameManager>();
+		GM = GameObject.Find("GameManager").GetComponent<GameManager>();
 		
 		P.CintaReceptora = Llegada.gameObject;
 		Partida.Recibir(P);
