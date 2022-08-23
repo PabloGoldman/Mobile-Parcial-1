@@ -18,17 +18,7 @@ public class ControlDireccion : MonoBehaviour
 	Sentido DirAct;
 	
 	public bool Habilitado = true;
-	//float Diferencia;
 		
-	//---------------------------------------------------------//
-	
-	// Use this for initialization
-	void Start () 
-	{
-	
-	}
-	
-	// Update is called once per frame
 	void Update () 
 	{
 		switch(InputAct)
@@ -39,21 +29,7 @@ public class ControlDireccion : MonoBehaviour
 			break;
 			
 		case TipoInput.Kinect:
-			
-			//print("Angulo: "+Angulo());
-			/*
-			if(ManoIzq.position.y > ManoDer.position.y)
-			{
-				DirAct = Sentido.Der;
-				Diferencia = ManoIzq.position.y - ManoDer.position.y;
-			}
-			else
-			{
-				DirAct = Sentido.Izq;
-				Diferencia = ManoDer.position.y - ManoIzq.position.y;
-			}
-			*/
-			
+
 			if(ManoIzq.position.y > ManoDer.position.y)
 			{
 				DirAct = Sentido.Der;
@@ -92,23 +68,25 @@ public class ControlDireccion : MonoBehaviour
                 if (Habilitado) {
                     if (Input.GetKey(KeyCode.A)) 
 					{
-                        gameObject.SendMessage("SetGiro", -1);
+						GetComponent<CarController>().SetGiro(-1);
                     }
                     if (Input.GetKey(KeyCode.D)) 
 					{
-                        gameObject.SendMessage("SetGiro", 1);
+						GetComponent<CarController>().SetGiro(1);
                     }
                 }
                 break;
             case TipoInput.Arrows:
                 if (Habilitado) {
-                    if (Input.GetKey(KeyCode.LeftArrow)) {
-                        gameObject.SendMessage("SetGiro", -1);
-                    }
-                    if (Input.GetKey(KeyCode.RightArrow)) {
-                        gameObject.SendMessage("SetGiro", 1);
-                    }
-                }
+                    if (Input.GetKey(KeyCode.LeftArrow)) 
+					{
+						GetComponent<CarController>().SetGiro(-1);
+					}
+					if (Input.GetKey(KeyCode.RightArrow)) 
+					{
+						GetComponent<CarController>().SetGiro(1);
+					}
+				}
                 break;
         }		
 	}

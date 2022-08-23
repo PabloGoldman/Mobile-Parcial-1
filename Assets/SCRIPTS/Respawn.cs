@@ -76,9 +76,6 @@ public class Respawn : MonoBehaviour
 		}
 		
 		IgnorarColision(true);
-		
-		//animacion de resp
-		
 	}
 	
 	public void Respawnear(Vector3 pos)
